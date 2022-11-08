@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 
 public class CadastroDAO {
         public void salvarCadastro(Login l){
-            String sql = "INSERT INTO projetoCRUD.login (nome, login, senha) values (?, ?, ?)";
+            String sql = "INSERT INTO projetoCRUD.login (nome, login, senha, dataNascimento, endereco)" 
+                        +"values (?, ?, ?,?,?)";
             
             Connection conn = null;
             PreparedStatement pstm = null;
@@ -21,6 +22,8 @@ public class CadastroDAO {
                 pstm.setString(1, l.nome);
                 pstm.setString(2, l.login);
                 pstm.setString(3, l.senha);
+                pstm.setString(4, l.dataNascimento);
+                pstm.setString(5, l.endereco);
                 
                 pstm.execute();  
                 JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
